@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import connectDB from './config/database.js';
+import { urlencoded } from 'express';
 
 // Route files
 import authRoutes from './routes/auth.js';
@@ -15,6 +16,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(urlencoded({extended: false}))
 
 // Mount routers
 app.use('/api/auth', authRoutes);
